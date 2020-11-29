@@ -1,0 +1,10 @@
+version: '3'
+networks: {default: {driver: 'bridge'}}
+services:
+    nginx:
+        image: gupalo/webserver
+        build: {context: '.', dockerfile: './Dockerfile'}
+        volumes:
+            - './var/log/nginx/:/var/log/nginx/'
+            - './var/www/:/var/www/'
+        ports: ['127.0.0.1:80:80/tcp']
